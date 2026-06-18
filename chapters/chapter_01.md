@@ -1,7 +1,7 @@
 ---
 title: 第一章：鐵翼、暴雪與第一聲和弦
 pov: 修亞 (Shua)
-word_count: 8850
+word_count: 10648
 ---
 
 ### 1

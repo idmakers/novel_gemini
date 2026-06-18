@@ -102,45 +102,45 @@
 ### 任務 7：創作第七章《背叛的冰冷雪夜》
 * **文件：**
   * 創建：`chapters/chapter_07.md`
-* - [ ] **步驟 1：寫作第七章內容**
+* - [x] **步驟 1：寫作第七章內容**
   * 修亞視角。聽覺受損，再也聽不見塞西莉雅的高音。寒冬深夜的整備庫中，修亞與蕾拉抱團取暖。在將死的預感與對塞西莉雅純潔愛意的負罪感中，修亞與蕾拉接吻。白相2式的三角關係達到冰點。
-* - [ ] **步驟 2：運行字數與關鍵詞驗證**
+* - [x] **步驟 2：運行字數與關鍵詞驗證**
   * 運行：`python3 scripts/verify_chapter.py chapters/chapter_07.md --min-words 8000 --keywords "修亞" "蕾拉" "塞西莉雅" "接吻"`
   * 預期：輸出 `Verification PASSED` 與字數。
-* - [ ] **步驟 3：Commit**
+* - [x] **步驟 3：Commit**
   * 運行：`git add chapters/chapter_07.md && git commit -m "feat: write chapter 7"`
 
 ### 任務 8：創作第八章《箱庭破裂的序曲》
 * **文件：**
   * 創建：`chapters/chapter_08.md`
-* - [ ] **步驟 1：寫作第八章內容**
+* - [x] **步驟 1：寫作第八章內容**
   * 雙視角交織。帝國高層下達命令犧牲修亞第一小隊進行誘敵防線充能。塞西莉雅冒死在共鳴儀中發出預警並計劃反叛。修亞與蕾拉在廢墟基地中與眾人達成共識——與其作為零件死在鐵籠裡，不如擊碎高牆。
-* - [ ] **步驟 2：運行字數與關鍵詞驗證**
+* - [x] **步驟 2：運行字數與關鍵詞驗證**
   * 運行：`python3 scripts/verify_chapter.py chapters/chapter_08.md --min-words 8000 --keywords "修亞" "塞西莉雅" "蕾拉" "高牆"`
   * 預期：輸出 `Verification PASSED` 與字數。
-* - [ ] **步驟 3：Commit**
+* - [x] **步驟 3：Commit**
   * 運行：`git add chapters/chapter_08.md && git commit -m "feat: write chapter 8"`
 
 ### 任務 9：創作第九章《砸碎樊籠的叛逆》
 * **文件：**
   * 創建：`chapters/chapter_09.md`
-* - [ ] **步驟 1：寫作第九章內容**
+* - [x] **步驟 1：寫作第九章內容**
   * 戰鬥高潮。修亞與蕾拉帶領殘部引導怪異巨獸回衝「白銀之門」與「黃金之門」。城牆破裂。修亞的同化率達到極限，開始變化為巨大而美麗的怪異巨獸。蕾拉站在他的肩頭，與他並肩破城。
-* - [ ] **步驟 2：運行字數與關鍵詞驗證**
+* - [x] **步驟 2：運行字數與關鍵詞驗證**
   * 運行：`python3 scripts/verify_chapter.py chapters/chapter_09.md --min-words 8000 --keywords "修亞" "蕾拉" "巨獸" "破城"`
   * 預期：輸出 `Verification PASSED` 與字數。
-* - [ ] **步驟 3：Commit**
+* - [x] **步驟 3：Commit**
   * 運行：`git add chapters/chapter_09.md && git commit -m "feat: write chapter 9"`
 
 ### 任務 10：創作第十章《雪原盡頭的遙遠奏鳴曲》
 * **文件：**
   * 創建：`chapters/chapter_10.md`
-* - [ ] **步驟 1：寫作第十章內容**
+* - [x] **步驟 1：寫作第十章內容**
   * 尾聲與餘音。帝國崩潰，無牆的新時代到來。塞西莉雅在廢墟的鋼琴前，演奏最後的送行樂章。在無邊的雪原上，徹底化為巨獸的修亞馱著金屬化大半的蕾拉，走向那傳說中沒有冰凍、自由的「海」。
-* - [ ] **步驟 2：運行字數與關鍵詞驗證**
+* - [x] **步驟 2：運行字數與關鍵詞驗證**
   * 運行：`python3 scripts/verify_chapter.py chapters/chapter_10.md --min-words 8000 --keywords "塞西莉雅" "修亞" "蕾拉" "海"`
   * 預期：輸出 `Verification PASSED` 與字數。
-* - [ ] **步驟 3：Commit**
+* - [x] **步驟 3：Commit**
   * 運行：`git add chapters/chapter_10.md && git commit -m "feat: write chapter 10"`
 
 ---
@@ -150,9 +150,9 @@
 ### 任務 11：小說彙整與總字數確認
 * **文件：**
   * 創建：`novel_full.md`
-* - [ ] **步驟 1：彙整所有章節**
+* - [x] **步驟 1：彙整所有章節**
   * 使用腳本將所有 `chapters/chapter_XX.md` 的內容拼接至 `novel_full.md`，並加上大標題與目錄。
-* - [ ] **步驟 2：運行最終總字數驗證**
+* - [x] **步驟 2：運行最終總字數驗證**
   * 運行統計：驗證 `novel_full.md` 總字數是否大於 100,000 字。
-* - [ ] **步驟 3：Commit**
+* - [x] **步驟 3：Commit**
   * 運行：`git add novel_full.md && git commit -m "feat: compile and verify full novel"`

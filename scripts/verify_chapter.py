@@ -7,19 +7,18 @@ import re
 def count_words(content: str) -> int:
     """
     Counts words in the content.
-    - Each Chinese character (CJK Unified Ideographs) counts as 1 word.
+    - Each Chinese character (CJK Unified, Extension A, Compatibility Ideographs) counts as 1 word.
     - Each English word (continuous alphabetic characters, including apostrophes) counts as 1 word.
     - Continuous digits are also counted as 1 word (since they represent numbers in text).
     """
-    # Match CJK unified ideographs (Chinese characters)
-    # Range \u4e00-\u9fff covers common Chinese characters.
-    chinese_chars = re.findall(r'[\u4e00-\u9fff]', content)
+    # Match Chinese characters in standard and extended ranges
+    chinese_chars = re.findall(r'[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff]', content)
     
-    # Match English words (including words with apostrophes like "don't" or "it's")
-    english_words = re.findall(r'\b[a-zA-Z]+(?:\'[a-zA-Z]+)?\b', content)
+    # Match English words (removed \b boundary to prevent missing words when adjacent to Chinese)
+    english_words = re.findall(r"[a-zA-Z]+(?:'[a-zA-Z]+)?", content)
     
-    # Match numbers (continuous digits)
-    numbers = re.findall(r'\b\d+\b', content)
+    # Match numbers (removed \b boundary)
+    numbers = re.findall(r"\d+", content)
     
     return len(chinese_chars) + len(english_words) + len(numbers)
 
@@ -31,6 +30,12 @@ def main():
         type=int, 
         default=8000, 
         help="Minimum required word count (default: 8000)"
+    )
+    parser.add_argument(
+        "--max-words", 
+        type=int, 
+        default=12000, 
+        help="Maximum allowed word count (default: 12000)"
     )
     parser.add_argument(
         "--keywords", 
@@ -52,18 +57,23 @@ def main():
         print(f"Error: Failed to read file '{args.filepath}': {e}", file=sys.stderr)
         sys.exit(1)
         
-    actual_words = count_words(content)
+    # Remove YAML Front Matter if present
+    body_content = re.sub(r'^---\s*\n.*?\n---\s*\n', '', content, flags=re.DOTALL)
+    
+    actual_words = count_words(body_content)
     
     errors = []
     
-    # Check word count
+    # Check word count boundaries
     if actual_words < args.min_words:
         errors.append(f"Word count check failed. Required: at least {args.min_words} words. Actual: {actual_words} words.")
+    if actual_words > args.max_words:
+        errors.append(f"Word count check failed. Required: at most {args.max_words} words. Actual: {actual_words} words.")
         
-    # Check keywords
+    # Check keywords on the body content (avoid matching in Front Matter)
     missing_keywords = []
     for kw in args.keywords:
-        if kw not in content:
+        if kw not in body_content:
             missing_keywords.append(kw)
             
     if missing_keywords:

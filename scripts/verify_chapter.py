@@ -51,7 +51,7 @@ def main():
         sys.exit(1)
         
     try:
-        with open(args.filepath, 'r', encoding='utf-8') as f:
+        with open(args.filepath, 'r', encoding='utf-8-sig') as f:
             content = f.read()
     except Exception as e:
         print(f"Error: Failed to read file '{args.filepath}': {e}", file=sys.stderr)

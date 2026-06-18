@@ -24,5 +24,19 @@ class TestBuildWeb(unittest.TestCase):
         # 中文(10) + 英文(3) + 數字(1) = 14
         self.assertEqual(count_words(content), 14)
 
+    def test_main_build(self):
+        output_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../index.html'))
+        if os.path.exists(output_path):
+            os.remove(output_path)
+        
+        from build_web import main_build
+        main_build()
+        
+        self.assertTrue(os.path.exists(output_path))
+        with open(output_path, 'r', encoding='utf-8') as f:
+            html_content = f.read()
+        self.assertIn("const NOVEL_DATA =", html_content)
+        self.assertIn("第一章", html_content)
+
 if __name__ == '__main__':
     unittest.main()
